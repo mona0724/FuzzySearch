@@ -1,0 +1,30 @@
+<h2> Serach Word </h2>
+
+Enter Word :<input type="text" name="word" autocomplete="on" id="word"><br><br>
+  
+<input type="submit" value="Submit" onclick="searchValue()">
+
+
+<p id="result"></p>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	function searchValue() {
+		word = document.getElementById('word').value;
+		
+		$.ajax({ // ajax calling for url on submmit 
+		type: 'GET',
+        url: '/searchword/',
+        data: {
+          'word': word
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data) {
+            document.getElementById("result").innerHTML = data;
+          }
+        }
+      });
+
+}
+</script>
