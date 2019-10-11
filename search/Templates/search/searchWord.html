@@ -21,7 +21,12 @@ Enter Word :<input type="text" name="word" autocomplete="on" id="word"><br><br>
         dataType: 'json',
         success: function (data) {
           if (data) {
-            document.getElementById("result").innerHTML = data;
+            var newNode = document.getElementById('result');      
+            for(i=0; i<data.length; i++){
+              newNode.innerHTML += data[i] +'<br>';
+              
+            }
+            
           }
         }
       });
